@@ -13,4 +13,9 @@ node
     {
         sh "npm run sonar"
     }
+    stage('docker-image-build and push')
+    {
+        sh "docker build ."
+        sh "docker images"
+    }
 }
