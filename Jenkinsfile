@@ -9,14 +9,9 @@ node
         sh "npm config set optional false"
         sh "npm i"
     }
-    stage('SonarQubereport')
-    {
-        sh "npm run sonar"
-    }
     stage('docker-image-build')
     {
         sh "docker build -t pavanktm/nodeapp:1.0.0 ."
-        sh "docker images|grep pavanktm/nodeapp:1.0.0"
     }
     stage('docker-image-push')
     {
