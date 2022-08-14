@@ -16,7 +16,7 @@ node
     stage('docker-image-push')
     {
         sh "docker tag node-app:1.0.0 pavanktm/node-app:1.0.0"
-        sh "echo $dockerpassswd| docker login -u pavanktm --password-stdin"
+        sh "echo $dockerpasswd| docker login -u pavanktm --password-stdin"
         sh "docker push pavanktm/node-app:1.0.0"
     }
 }
