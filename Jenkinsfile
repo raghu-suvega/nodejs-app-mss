@@ -9,6 +9,10 @@ node
         sh "npm config set optional false"
         sh "npm i"
     }
+    stage('Sonaqube-analysis')
+    {
+        sh "npm run sonar"
+    }
     stage('docker-image-build')
     {
         sh "docker build -t node-app:1.0.0 ."
