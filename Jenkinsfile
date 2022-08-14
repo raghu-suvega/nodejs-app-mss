@@ -13,9 +13,15 @@ node
     {
         sh "npm run sonar"
     }
-    stage('docker-image-build and push')
+    stage('docker-image-build')
     {
-        sh "docker build ."
-        sh "docker images"
+        sh "docker build -t pavanktm/nodeapp:1.0.0 ."
+        sh "docker images|grep pavanktm/nodeapp:1.0.0"
+    }
+    stage('docker-image-push')
+    {
+        sh "docker tag pavanktm/nodeapp:1.0.0 pavanktm/node-app:1.0.0"
+        sh "echo $dockerpassswd| docker login -u pavanktm --password-stdin"
+        sh "docker push pavanktm/node-app:1.0.0"
     }
 }
