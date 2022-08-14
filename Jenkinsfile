@@ -11,11 +11,11 @@ node
     }
     stage('docker-image-build')
     {
-        sh "docker build -t pavanktm/nodeapp:1.0.0 ."
+        sh "docker build -t node-app:1.0.0 ."
     }
     stage('docker-image-push')
     {
-        sh "docker tag pavanktm/nodeapp:1.0.0 pavanktm/node-app:1.0.0"
+        sh "docker tag node-app:1.0.0 pavanktm/node-app:1.0.0"
         sh "echo $dockerpassswd| docker login -u pavanktm --password-stdin"
         sh "docker push pavanktm/node-app:1.0.0"
     }
