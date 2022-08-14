@@ -23,4 +23,8 @@ node
         sh "docker login -u pavanktm -p Lion@1234"
         sh "docker push pavanktm/node-app:1.0.0"
     }
+    stage('deploy')
+    {
+        sh "kubectl apply -f deployment.yaml"
+    }
 }
